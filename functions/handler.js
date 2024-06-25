@@ -77,6 +77,12 @@ try {
 
 // functions/handler.js
 
-exports.handler = async (req, res) => {
-    res.status(200).json({ message: "Halo" });
+
+exports.handler = async (event, context) => {
+    // Your handler logic here
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Hello from serverless function!" })
+    };
 };
+
