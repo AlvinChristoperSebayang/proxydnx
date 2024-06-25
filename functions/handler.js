@@ -78,11 +78,12 @@ try {
 // functions/handler.js
 
 
-exports.handler = async (event, context) => {
+// functions/handler.js
+
+module.exports = async (event, context) => {
     // Your handler logic here
     return {
         statusCode: 200,
         body: JSON.stringify({ message: "Hello from serverless function!" })
     };
 };
-
