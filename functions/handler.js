@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 exports.handler = async function(event, context) {
     const { queryStringParameters } = event;
 
@@ -13,6 +11,14 @@ exports.handler = async function(event, context) {
     const variantUrl = `https://${shopName}.myshopify.com/admin/api/${apiVersion}/variants/${variantID}.json`;
 
     try {
+        // Dynamic import untuk node-fetch
+        let fetch;
+        try {
+            fetch = require('node-fetch');
+        } catch (e) {
+            fetch = (await import('node-fetch')).default;
+        }
+
         // Fetch pertama untuk mendapatkan inventory_item_id
         const variantResponse = await fetch(variantUrl, {
             method: 'GET',
