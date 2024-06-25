@@ -1,4 +1,10 @@
-const fetch = require('node-fetch');
+let fetch;
+try {
+    fetch = require('node-fetch');
+} catch (e) {
+    fetch = (await import('node-fetch')).default;
+}
+
 
 // exports.handler = async function(event, context) {
 //     const { queryStringParameters } = event;
